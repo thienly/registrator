@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  etonregistrator:
+    image: etonregistrator
+    build:
+      context: ./etonregistrator
+      dockerfile: Dockerfile

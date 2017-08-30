@@ -1,0 +1,11 @@
+C:\Users\Administrator\source\repos\etonregistrator\etonregistrator\bin\Debug\netcoreapp2.0\etonregistrator.deps.json
+C:\Users\Administrator\source\repos\etonregistrator\etonregistrator\bin\Debug\netcoreapp2.0\etonregistrator.runtimeconfig.json
+C:\Users\Administrator\source\repos\etonregistrator\etonregistrator\bin\Debug\netcoreapp2.0\etonregistrator.runtimeconfig.dev.json
+C:\Users\Administrator\source\repos\etonregistrator\etonregistrator\bin\Debug\netcoreapp2.0\etonregistrator.dll
+C:\Users\Administrator\source\repos\etonregistrator\etonregistrator\bin\Debug\netcoreapp2.0\etonregistrator.pdb
+C:\Users\Administrator\source\repos\etonregistrator\etonregistrator\obj\Debug\netcoreapp2.0\etonregistrator.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\etonregistrator\etonregistrator\obj\Debug\netcoreapp2.0\etonregistrator.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\etonregistrator\etonregistrator\obj\Debug\netcoreapp2.0\etonregistrator.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\etonregistrator\etonregistrator\obj\Debug\netcoreapp2.0\etonregistrator.dll
+C:\Users\Administrator\source\repos\etonregistrator\etonregistrator\obj\Debug\netcoreapp2.0\etonregistrator.pdb
+C:\Users\Administrator\source\repos\etonregistrator\etonregistrator\bin\Debug\netcoreapp2.0\Dockerfile
