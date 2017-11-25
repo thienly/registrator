@@ -1,0 +1,11 @@
+C:\Projects\registrator\Worker\RegistratorWorker\bin\Debug\netcoreapp2.0\Dockerfile
+C:\Projects\registrator\Worker\RegistratorWorker\bin\Debug\netcoreapp2.0\RegistratorWorker.deps.json
+C:\Projects\registrator\Worker\RegistratorWorker\bin\Debug\netcoreapp2.0\RegistratorWorker.runtimeconfig.json
+C:\Projects\registrator\Worker\RegistratorWorker\bin\Debug\netcoreapp2.0\RegistratorWorker.runtimeconfig.dev.json
+C:\Projects\registrator\Worker\RegistratorWorker\bin\Debug\netcoreapp2.0\RegistratorWorker.dll
+C:\Projects\registrator\Worker\RegistratorWorker\bin\Debug\netcoreapp2.0\etonregistrator.dll
+C:\Projects\registrator\Worker\RegistratorWorker\bin\Debug\netcoreapp2.0\etonregistrator.pdb
+C:\Projects\registrator\Worker\RegistratorWorker\obj\Debug\netcoreapp2.0\RegistratorWorker.csprojResolveAssemblyReference.cache
+C:\Projects\registrator\Worker\RegistratorWorker\obj\Debug\netcoreapp2.0\RegistratorWorker.csproj.CoreCompileInputs.cache
+C:\Projects\registrator\Worker\RegistratorWorker\obj\Debug\netcoreapp2.0\RegistratorWorker.AssemblyInfoInputs.cache
+C:\Projects\registrator\Worker\RegistratorWorker\obj\Debug\netcoreapp2.0\RegistratorWorker.AssemblyInfo.cs

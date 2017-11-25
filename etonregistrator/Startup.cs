@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Consul;
 using System.Net;
+using etonregistrator.Consul;
 using etonregistrator.Controllers;
 
 namespace etonregistrator

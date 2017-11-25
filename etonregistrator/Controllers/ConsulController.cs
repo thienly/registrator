@@ -7,6 +7,7 @@ using Docker.DotNet;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Concurrent;
+using etonregistrator.Consul;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 

@@ -4957,7 +4957,7 @@
       ]
     },
     "Microsoft.ApplicationInsights/2.4.0": {
-      "sha512": "OLwgQoRE7qMYLGa0wyeDoWxDkFj/XbRw72Ns/7ky9Q7G4OEYKXS3rnZInc+MveQphW3Yb7lFXPlz35QPks/ckg==",
+      "sha512": "4dX/zu3Psz9oM3ErU64xfOHuSxOwMxN6q5RabSkeYbX42Yn6dR/kDToqjs+txCRjrfHUxyYjfeJHu+MbCfvAsg==",
       "type": "package",
       "path": "microsoft.applicationinsights/2.4.0",
       "files": [
@@ -4977,7 +4977,7 @@
       ]
     },
     "Microsoft.ApplicationInsights.AspNetCore/2.1.1": {
-      "sha512": "9Dts2DZhDWvoZmTNmvuwQL8VZHKaekvsFmWDb63A0cLfg9vCGK6f3f74C08mpyL91UpTn1FQSQSMFHrimdcG4g==",
+      "sha512": "kiGmzl9Cav34dF7AHVMoJxdJJQEeLB8KZGNwX1LjImG9iem5hGk4DkHpW7/m9Nh3DrL8IKSL3mqQo+IPqWfMRQ==",
       "type": "package",
       "path": "microsoft.applicationinsights.aspnetcore/2.1.1",
       "files": [
@@ -4990,7 +4990,7 @@
       ]
     },
     "Microsoft.ApplicationInsights.DependencyCollector/2.4.1": {
-      "sha512": "l9x7+pc3lNx/ibLTN3jsyzbZ7iZpxAEHenRaXABY//21tAPB/d2ENHURP36iu0g5RQO36r/qA/wLyb9JYVCO9Q==",
+      "sha512": "RWxdX90MY6tNF8S5lwRvJcHiBMIWwVLCxd4TGIEl3X0yAKaolY2vs4zTCvyCIVkEAMs1aInTgWkYwOjzYvAHWw==",
       "type": "package",
       "path": "microsoft.applicationinsights.dependencycollector/2.4.1",
       "files": [
@@ -5008,7 +5008,7 @@
       ]
     },
     "Microsoft.AspNetCore/2.0.0": {
-      "sha512": "F87o23Og9is1yznIIbisfptRNVj/BjY0xGLI4XDj14dlG5IXzZtSLUKr/iE+g+fznbc8oOYsGGdtlUws70wu2Q==",
+      "sha512": "Pp4CNfgJgKTyU+oRQYh6InA1lwcZLi5ZsfTxWwixagbRsVdWrROBFnKGw+FvbbuzKNyMn4Cg5zRv99LjqxVIJA==",
       "type": "package",
       "path": "microsoft.aspnetcore/2.0.0",
       "files": [
@@ -5513,7 +5513,7 @@
       ]
     },
     "Microsoft.AspNetCore.Mvc/2.0.0": {
-      "sha512": "pPf4+T9wDuyOIYfuaPrXUlw3ZaEjCqvpFi5syFyCMpkS8JoRtU/Ln4tj6Uy9hHEd8NkbFhhHvXh8d5WXVuIoYw==",
+      "sha512": "9KmSDGw3XXosv3+c7TX8An91ya+jtzbAuquHVp6t/qB1CA+MZI7r2d6n3dvUZUcKbrpmB8cfbvzbeEGv/QKp3Q==",
       "type": "package",
       "path": "microsoft.aspnetcore.mvc/2.0.0",
       "files": [
@@ -5907,7 +5907,7 @@
       ]
     },
     "Microsoft.AspNetCore.StaticFiles/2.0.0": {
-      "sha512": "WtxqlEDeo/GW+SKxSdHjttj7bP1U1/yyUddnwPIFjF772TWLgRZUHnK5VziVFJxldu9qoHCtJBF4QG87IT3DtA==",
+      "sha512": "HBMJQ1WPdHO0thltwi7agvfis3c1Kd5HFQDgyy0nV3X4mJvhVGUnymT0+QQU+GGNK9FG/uEQNE3YDSrrBamP7w==",
       "type": "package",
       "path": "microsoft.aspnetcore.staticfiles/2.0.0",
       "files": [
@@ -6257,7 +6257,7 @@
       ]
     },
     "Microsoft.EntityFrameworkCore.Design/2.0.0": {
-      "sha512": "RRKEDoIx3XiiCKmQw43LZiS/P+RDNyS9y3XP2UWguPSoM/xkmaFYJyZFUYJn/u+QSK9OhfZvdv4BtG5BELD62A==",
+      "sha512": "KWlZQtIMU3+ZMF0K1+/zNAtHKeXUBYQ5mow/n9693E2OLP/FjR0G4cxMvh+w7RnBLU0szPgOe1aOxFa4OWZNlg==",
       "type": "package",
       "path": "microsoft.entityframeworkcore.design/2.0.0",
       "files": [
@@ -6312,7 +6312,7 @@
       ]
     },
     "Microsoft.EntityFrameworkCore.SqlServer/2.0.0": {
-      "sha512": "jeSbSLW6fubTSOIj4cdIq8w3nkAYeFqAdD+Qw2yJVE22JsEdhhhzBMku4bLODua4k8CPNrdM6WIUHUdIMt2FRg==",
+      "sha512": "D6NKwWEz2MyC5FNucneMrU2UKMePhnmCEyZ8ITMhlmqozQuAoBdj0BLqDz1QH0sWdrySoT0jnSO0wB5K2RX68A==",
       "type": "package",
       "path": "microsoft.entityframeworkcore.sqlserver/2.0.0",
       "files": [
@@ -6323,7 +6323,7 @@
       ]
     },
     "Microsoft.EntityFrameworkCore.Tools/2.0.0": {
-      "sha512": "s4O79IGV8IoSfaPWbXpJWMgkLrzwRo3SWtv2uQ6tqPZ1MOdLY2zvYNtYWLMWQzKa861RCUbeHyNkqfw8WXfoCw==",
+      "sha512": "iABS2GMpngQJ5kKHIFT1/aIXNABGVAB7KGsdcAhGb031HrWdyEPWv23B5Rwc5lwqmnPbIS/GQGaXk2QehBVEhA==",
       "type": "package",
       "path": "microsoft.entityframeworkcore.tools/2.0.0",
       "files": [
@@ -6726,7 +6726,7 @@
       ]
     },
     "Microsoft.Extensions.Logging.Debug/2.0.0": {
-      "sha512": "sa32HgmSS9ZLbOOJQW1bUjzCYzpYah8E1lyW93twB6/mA0BZ9JAlz7kPPVdToFH9CVdRcVQwRQQuPcp3gkPQBQ==",
+      "sha512": "29Zn5m9yb4NEP+qbeLl+7F2lDskDfrs8NbrM8eJ+k/pYE8JksRUEFxHp1bcpGSfGP9w0pMQMOKrVcwD3u5sPog==",
       "type": "package",
       "path": "microsoft.extensions.logging.debug/2.0.0",
       "files": [
@@ -7496,7 +7496,7 @@
       ]
     },
     "Microsoft.VisualStudio.Web.BrowserLink/2.0.0": {
-      "sha512": "xz3uL+9JLPhyVLLrqCT4f2WUioI0BTCgHl2WF32O525GHBWvQsCZm1dcygoanGP+z+tJxfOCw7CmDhzM41KbeA==",
+      "sha512": "+iLi1BBW/52xtKPYITk1jJSD0sJCHYy5dbOjSQZiZjnqPGjuo2LAfhz//rYAzYbyKq+kH1CO763ViGcdsMvFbA==",
       "type": "package",
       "path": "microsoft.visualstudio.web.browserlink/2.0.0",
       "files": [
@@ -12927,7 +12927,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
+    "C:\\Users\\eton\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -12936,17 +12936,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\etonregistrator\\etonregistrator\\etonregistrator.csproj",
+      "projectUniqueName": "C:\\Projects\\registrator\\etonregistrator\\etonregistrator.csproj",
       "projectName": "etonregistrator",
-      "projectPath": "C:\\Users\\Administrator\\source\\repos\\etonregistrator\\etonregistrator\\etonregistrator.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\source\\repos\\etonregistrator\\etonregistrator\\obj\\",
+      "projectPath": "C:\\Projects\\registrator\\etonregistrator\\etonregistrator.csproj",
+      "packagesPath": "C:\\Users\\eton\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\registrator\\etonregistrator\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\eton\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
