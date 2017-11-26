@@ -12,3 +12,7 @@ C:\Projects\registrator\tests\RegistratorWorkerTests\obj\Debug\netcoreapp2.0\Reg
 C:\Projects\registrator\tests\RegistratorWorkerTests\bin\Debug\netcoreapp2.0\RegistratorWorkerTests.pdb
 C:\Projects\registrator\tests\RegistratorWorkerTests\obj\Debug\netcoreapp2.0\RegistratorWorkerTests.dll
 C:\Projects\registrator\tests\RegistratorWorkerTests\obj\Debug\netcoreapp2.0\RegistratorWorkerTests.pdb
+C:\Projects\registrator\tests\RegistratorWorkerTests\bin\Debug\netcoreapp2.0\EtonRegistratorShared.dll
+C:\Projects\registrator\tests\RegistratorWorkerTests\bin\Debug\netcoreapp2.0\RegistratorWorker.dll
+C:\Projects\registrator\tests\RegistratorWorkerTests\bin\Debug\netcoreapp2.0\RegistratorWorker.pdb
+C:\Projects\registrator\tests\RegistratorWorkerTests\bin\Debug\netcoreapp2.0\EtonRegistratorShared.pdb

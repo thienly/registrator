@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\etonregistrator\etonregistrator.csproj" />
+    <ProjectReference Include="..\..\shared\ClassLibrary1\EtonRegistratorShared.csproj" />
   </ItemGroup>
 
 </Project>
