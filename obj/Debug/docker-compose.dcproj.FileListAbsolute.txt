@@ -1,2 +1,0 @@
-C:\Users\Administrator\source\repos\etonregistrator\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
-D:\Projects\registrator\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
