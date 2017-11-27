@@ -6,7 +6,7 @@ services:
       args:
         source: obj/Docker/publish/
     volumes:
-      - C:\Users\Administrator\onecoremsvsmon:C:\remote_debugger:ro
+      - C:\Users\Thien Ly\onecoremsvsmon:C:\remote_debugger:ro
     entrypoint: powershell -Command [System.Threading.Thread]::Sleep([System.Threading.Timeout]::Infinite)
     labels:
       com.microsoft.visualstudio.debuggee.program: "C:\\Program Files\\dotnet\\dotnet.exe"

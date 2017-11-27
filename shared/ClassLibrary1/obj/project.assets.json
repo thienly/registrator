@@ -30,7 +30,7 @@
   },
   "libraries": {
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "sha512": "RHWuoL8+z6JKSFqKmt0/kLXvQr45BY8eTLNHA12BdpMgsR9iDGA4faBaETYSTY8A3+Kg2cL8zKguMzW/aBAlTQ==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
@@ -177,7 +177,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\eton\\.nuget\\packages\\": {},
+    "C:\\Users\\Thien Ly\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -186,17 +186,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Projects\\registrator\\shared\\ClassLibrary1\\EtonRegistratorShared.csproj",
+      "projectUniqueName": "D:\\Projects\\registrator\\shared\\ClassLibrary1\\EtonRegistratorShared.csproj",
       "projectName": "EtonRegistratorShared",
-      "projectPath": "C:\\Projects\\registrator\\shared\\ClassLibrary1\\EtonRegistratorShared.csproj",
-      "packagesPath": "C:\\Users\\eton\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\registrator\\shared\\ClassLibrary1\\obj\\",
+      "projectPath": "D:\\Projects\\registrator\\shared\\ClassLibrary1\\EtonRegistratorShared.csproj",
+      "packagesPath": "C:\\Users\\Thien Ly\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\registrator\\shared\\ClassLibrary1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\eton\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Thien Ly\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -204,6 +204,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\Thien Ly\\.dotnet\\NuGetFallbackFolder": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

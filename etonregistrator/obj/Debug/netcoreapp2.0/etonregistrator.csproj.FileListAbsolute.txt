@@ -9,3 +9,15 @@ C:\Users\Administrator\source\repos\etonregistrator\etonregistrator\obj\Debug\ne
 C:\Users\Administrator\source\repos\etonregistrator\etonregistrator\obj\Debug\netcoreapp2.0\etonregistrator.dll
 C:\Users\Administrator\source\repos\etonregistrator\etonregistrator\obj\Debug\netcoreapp2.0\etonregistrator.pdb
 C:\Users\Administrator\source\repos\etonregistrator\etonregistrator\bin\Debug\netcoreapp2.0\Dockerfile
+D:\Projects\registrator\etonregistrator\bin\Debug\netcoreapp2.0\Dockerfile
+D:\Projects\registrator\etonregistrator\bin\Debug\netcoreapp2.0\etonregistrator.deps.json
+D:\Projects\registrator\etonregistrator\bin\Debug\netcoreapp2.0\etonregistrator.runtimeconfig.json
+D:\Projects\registrator\etonregistrator\bin\Debug\netcoreapp2.0\etonregistrator.runtimeconfig.dev.json
+D:\Projects\registrator\etonregistrator\bin\Debug\netcoreapp2.0\etonregistrator.dll
+D:\Projects\registrator\etonregistrator\bin\Debug\netcoreapp2.0\etonregistrator.pdb
+D:\Projects\registrator\etonregistrator\obj\Debug\netcoreapp2.0\etonregistrator.csprojResolveAssemblyReference.cache
+D:\Projects\registrator\etonregistrator\obj\Debug\netcoreapp2.0\etonregistrator.csproj.CoreCompileInputs.cache
+D:\Projects\registrator\etonregistrator\obj\Debug\netcoreapp2.0\etonregistrator.AssemblyInfoInputs.cache
+D:\Projects\registrator\etonregistrator\obj\Debug\netcoreapp2.0\etonregistrator.AssemblyInfo.cs
+D:\Projects\registrator\etonregistrator\obj\Debug\netcoreapp2.0\etonregistrator.dll
+D:\Projects\registrator\etonregistrator\obj\Debug\netcoreapp2.0\etonregistrator.pdb

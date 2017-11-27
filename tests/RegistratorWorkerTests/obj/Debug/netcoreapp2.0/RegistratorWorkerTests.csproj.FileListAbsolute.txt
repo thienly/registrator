@@ -16,3 +16,9 @@ C:\Projects\registrator\tests\RegistratorWorkerTests\bin\Debug\netcoreapp2.0\Eto
 C:\Projects\registrator\tests\RegistratorWorkerTests\bin\Debug\netcoreapp2.0\RegistratorWorker.dll
 C:\Projects\registrator\tests\RegistratorWorkerTests\bin\Debug\netcoreapp2.0\RegistratorWorker.pdb
 C:\Projects\registrator\tests\RegistratorWorkerTests\bin\Debug\netcoreapp2.0\EtonRegistratorShared.pdb
+D:\Projects\registrator\tests\RegistratorWorkerTests\obj\Debug\netcoreapp2.0\RegistratorWorkerTests.csprojResolveAssemblyReference.cache
+D:\Projects\registrator\tests\RegistratorWorkerTests\obj\Debug\netcoreapp2.0\RegistratorWorkerTests.csproj.CoreCompileInputs.cache
+D:\Projects\registrator\tests\RegistratorWorkerTests\obj\Debug\netcoreapp2.0\RegistratorWorkerTests.AssemblyInfoInputs.cache
+D:\Projects\registrator\tests\RegistratorWorkerTests\obj\Debug\netcoreapp2.0\RegistratorWorkerTests.AssemblyInfo.cs
+D:\Projects\registrator\tests\RegistratorWorkerTests\obj\Debug\netcoreapp2.0\RegistratorWorkerTests.dll
+D:\Projects\registrator\tests\RegistratorWorkerTests\obj\Debug\netcoreapp2.0\RegistratorWorkerTests.pdb

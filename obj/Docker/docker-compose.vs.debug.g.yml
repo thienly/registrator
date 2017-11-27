@@ -11,9 +11,9 @@ services:
       - NUGET_PACKAGES=C:\.nuget\packages
       - NUGET_FALLBACK_PACKAGES=c:\.nuget\fallbackpackages
     volumes:
-      - C:\Users\Administrator\source\repos\etonregistrator\etonregistrator:C:\app
-      - C:\Users\Administrator\onecoremsvsmon:C:\remote_debugger:ro
-      - C:\Users\Administrator\.nuget\packages\:C:\.nuget\packages:ro
+      - D:\Projects\registrator\etonregistrator:C:\app
+      - C:\Users\Thien Ly\onecoremsvsmon:C:\remote_debugger:ro
+      - C:\Users\Thien Ly\.nuget\packages\:C:\.nuget\packages:ro
       - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:c:\.nuget\fallbackpackages:ro
 
     entrypoint: powershell -Command [System.Threading.Thread]::Sleep([System.Threading.Timeout]::Infinite)

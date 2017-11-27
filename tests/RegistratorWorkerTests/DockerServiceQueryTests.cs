@@ -46,27 +46,6 @@ namespace RegistratorWorkerTests
                 await task;
             }
         }
-
-        [Fact]
-        public async Task Test_remove_monitor()
-        {
-            //Arrange
-            bool wasProgressCalled;
-            var progress = new Progress<JSONMessage>((m) =>
-            {
-                var a = m;
-                wasProgressCalled = true;
-            });
-            using (var client = _configuration.CreateClient())
-            {
-                client.System.MonitorEventsAsync()
-                var task = Task.Run(() => client.System.MonitorEventsAsync(new ContainerEventsParameters(), progress));
-                await client.Containers.RemoveContainerAsync("30a02e65e807", new ContainerRemoveParameters()
-                {
-                    Force = true
-                });
-                await task;
-            }
-        }
+      
     }
 }

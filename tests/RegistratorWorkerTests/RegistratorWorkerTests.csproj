@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Worker\RegistratorWorker\RegistratorWorker.csproj" />
+    <ProjectReference Include="..\..\src\RegistratorWorker\RegistratorWorker.csproj" />
   </ItemGroup>
 
 </Project>
