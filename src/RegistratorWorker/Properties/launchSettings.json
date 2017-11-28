@@ -21,7 +21,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/values",
-      "commandLineArgs": "--host 10.0.19.110 --docker tcp://10.0.19.106:2375 --consul 10.0.19.110:8500",
+      "commandLineArgs": "--host 10.0.19.160 --docker tcp://10.0.19.106:2375 --consul 10.0.19.110:8500",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

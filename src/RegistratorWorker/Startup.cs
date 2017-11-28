@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Threading.Tasks;
 using Consul;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -54,30 +55,32 @@ namespace RegistratorWorker
         {
             var role = Configuration.GetValue<string>("role");
             var name = Configuration.GetValue<string>("name");
+            var host = Configuration.GetValue<string>("host");
             var intervalCheck = Configuration.GetValue<string>("intervalCheck");
             if (String.IsNullOrEmpty(intervalCheck))
                 intervalCheck = "5";
             var consulUtilities = new ConsulUtilities(Configuration);
             using (var consulClient = consulUtilities.CreateConsulClient())
             {
-                consulClient.Agent.ServiceRegister(new AgentServiceRegistration()
+            
+                var task = Task.Run(() => consulClient.Agent.ServiceRegister(new AgentServiceRegistration()
                 {
-                    Address = $"{ServerAddress.Scheme}://{ServerAddress.Host}",
+                    Address = $"http://{host}",
                     Check = new AgentServiceCheck()
                     {
-                        
-                        HTTP = $"{ServerAddress.Scheme}://{ServerAddress.Host}:{ServerAddress.Port}/api/health/status",
+                        HTTP = $"http://{host}:5000/api/health/status",
                         Interval = TimeSpan.FromSeconds(int.Parse(intervalCheck)),
-                        DeregisterCriticalServiceAfter = TimeSpan.FromSeconds(int.Parse(intervalCheck)),
-                        Timeout = TimeSpan.FromMilliseconds(2)
+                        DeregisterCriticalServiceAfter = TimeSpan.FromMinutes(2),
+                        Timeout = TimeSpan.FromMinutes(10)
                     },
                     Name = name ?? Guid.NewGuid().ToString(),
                     ID = Guid.NewGuid().ToString(),
-                    Tags = new []{role},
-                    Port = ServerAddress.Port,
-                }).Wait();
+                    Tags = new[] {"manager"},
+                    Port = 5000,
+                }));
+                task.Wait();
             }
-            
+
         }
 
         public void OnApplicationStopped()
