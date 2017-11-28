@@ -46,29 +46,38 @@ namespace RegistratorWorker
             ServerAddress = new Uri(address);
 
             applicationLifetime.ApplicationStarted.Register(OnApplicationStarted);
-            //applicationLifetime.ApplicationStopped.Register(OnApplicationStopped);
+            applicationLifetime.ApplicationStopped.Register(OnApplicationStopped);
             app.UseMvc();
         }
 
         public void OnApplicationStarted()
         {
+            var role = Configuration.GetValue<string>("role");
+            var name = Configuration.GetValue<string>("name");
+            var intervalCheck = Configuration.GetValue<string>("intervalCheck");
+            if (String.IsNullOrEmpty(intervalCheck))
+                intervalCheck = "5";
             var consulUtilities = new ConsulUtilities(Configuration);
             using (var consulClient = consulUtilities.CreateConsulClient())
             {
-                consulClient.KV.Put(new KVPair("EtonRegistrator")
+                consulClient.Agent.ServiceRegister(new AgentServiceRegistration()
                 {
-                    Value = Encoding.UTF8.GetBytes("AAAAA")
+                    Address = $"{ServerAddress.Scheme}://{ServerAddress.Host}",
+                    Check = new AgentServiceCheck()
+                    {
+                        
+                        HTTP = $"{ServerAddress.Scheme}://{ServerAddress.Host}:{ServerAddress.Port}/api/health/status",
+                        Interval = TimeSpan.FromSeconds(int.Parse(intervalCheck)),
+                        DeregisterCriticalServiceAfter = TimeSpan.FromSeconds(int.Parse(intervalCheck)),
+                        Timeout = TimeSpan.FromMilliseconds(2)
+                    },
+                    Name = name ?? Guid.NewGuid().ToString(),
+                    ID = Guid.NewGuid().ToString(),
+                    Tags = new []{role},
+                    Port = ServerAddress.Port,
                 }).Wait();
-
             }
-            //Auto Add to consul if this is manager
-            //var serverAddress = Configuration.GetValue<string>("manager");
-            //if (string.IsNullOrEmpty(serverAddress))
-            //    throw new ApplicationException("Can not start the application due to missing server parameter");
-            //using (var httpClient = new HttpClient())
-            //{
-            //    httpClient.BaseAddress = new Uri($"http://{serverAddress}");
-            //}
+            
         }
 
         public void OnApplicationStopped()

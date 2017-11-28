@@ -46,6 +46,6 @@ namespace RegistratorWorkerTests
                 await task;
             }
         }
-      
+       
     }
 }

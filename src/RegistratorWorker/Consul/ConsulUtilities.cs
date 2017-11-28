@@ -62,7 +62,10 @@ namespace RegistratorWorker.Consul
         public ConsulClient CreateConsulClient()
         {
             var consulAddress = _configuration.GetValue<string>("consul");
-            return new ConsulClient(cfg => { cfg.Address = new Uri($"http://{consulAddress}"); });
+            return new ConsulClient(cfg =>
+            {
+                cfg.Address = new Uri($"http://{consulAddress}"); 
+            });
         }
         public ConsulClient CreateConsulClient(string consulAddress)
         {
