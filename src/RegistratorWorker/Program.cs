@@ -12,7 +12,6 @@ namespace RegistratorWorker
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseUrls("http://10.0.19.160:5000")
                 .UseStartup<Startup>()
                 .Build();
     }
