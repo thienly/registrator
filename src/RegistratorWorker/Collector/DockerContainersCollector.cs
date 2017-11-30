@@ -16,7 +16,7 @@ namespace RegistratorWorker.Collector
             _dockerClientConfiguration = dockerClientConfiguration;
         }
 
-        public async Task<IReadOnlyCollection<ContainerInfo>> GetAllRunningContainerAndIsCretedByService()
+        public async Task<IReadOnlyCollection<ContainerInfo>> GetAllRunningContainerThatIsCretedByService()
         {
             using (var client = _dockerClientConfiguration.CreateClient())
             {
@@ -41,9 +41,15 @@ namespace RegistratorWorker.Collector
                         };
                         return info;
                     }).ToList();
-                CollectorInternalData.Current.AddRange(serviceContainer);
                 return serviceContainer;
             }
+        }
+
+        public async Task<IReadOnlyCollection<ContainerInfo>> GetAllRunningContainerThatIsNotRegister()
+        {
+            var readOnlyCollection = await GetAllRunningContainerThatIsCretedByService();
+            var currentData = CollectorInternalData.Current.Data;
+            return readOnlyCollection.Except(currentData,new ContainerInfo()).ToList();
         }
     }
 }

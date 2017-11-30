@@ -18,7 +18,7 @@ namespace RegistratorWorker.Controllers
         [HttpGet]
         public async Task<IReadOnlyCollection<ContainerInfo>> GetAllRunningContainer()
         {
-            return await _dockerContainersCollector.GetAllRunningContainerAndIsCretedByService();
+            return await _dockerContainersCollector.GetAllRunningContainerThatIsCretedByService();
         }
     }
 }

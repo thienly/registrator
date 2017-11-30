@@ -21,7 +21,7 @@ namespace RegistratorWorkerTests
             //Arrange
             var collector = new DockerContainersCollector(_configuration);
             //Act
-            var readOnlyCollection = await collector.GetAllRunningContainerAndIsCretedByService();
+            var readOnlyCollection = await collector.GetAllRunningContainerThatIsCretedByService();
             //Assert
             Assert.NotEmpty(readOnlyCollection);
         }

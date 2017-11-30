@@ -51,6 +51,11 @@ namespace RegistratorWorkerTests
                     if (responseValue.Service != "consul")
                         await consulClient.Agent.ServiceDeregister(responseValue.ID);
                 }
+                var result = await consulClient.Agent.Checks();
+                foreach (var responseValue in result.Response.Values)
+                {
+                    await consulClient.Agent.CheckDeregister(responseValue.CheckID);
+                }
             }
         }
     }

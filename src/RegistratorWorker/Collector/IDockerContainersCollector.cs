@@ -6,6 +6,8 @@ namespace RegistratorWorker.Collector
 {
     public interface IDockerContainersCollector
     {
-        Task<IReadOnlyCollection<ContainerInfo>> GetAllRunningContainerAndIsCretedByService();
+        Task<IReadOnlyCollection<ContainerInfo>> GetAllRunningContainerThatIsCretedByService();
+        Task<IReadOnlyCollection<ContainerInfo>> GetAllRunningContainerThatIsNotRegister();
+
     }
 }

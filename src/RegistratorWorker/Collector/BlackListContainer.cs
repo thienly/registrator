@@ -5,27 +5,31 @@ using RegistratorWorker.Common;
 
 namespace RegistratorWorker.Collector
 {
-    public sealed class CollectorInternalData
+    public class BlackListContainer
     {
         private List<ContainerInfo> _data = new List<ContainerInfo>();
-        private static CollectorInternalData _current;
-        private CollectorInternalData()
+        private static BlackListContainer _current;
+        private BlackListContainer()
         {
-            
+
         }
 
-        public static CollectorInternalData Current
+        public static BlackListContainer Current
         {
             get
             {
-                if (_current == null)  
-                    _current = new CollectorInternalData();
+                if (_current == null)
+                    _current = new BlackListContainer();
                 return _current;
             }
         }
 
         public List<ContainerInfo> Data => _data;
 
+        public bool IsInBlackList(ContainerInfo info)
+        {
+            return _data.Any(c => c.Id == info.Id);
+        }
         public void Add(ContainerInfo containerInfo)
         {
             _data.Add(containerInfo);
@@ -37,7 +41,7 @@ namespace RegistratorWorker.Collector
         }
         public void Remove(string id)
         {
-            var found = _data.FirstOrDefault(x=>x.Id == id);
+            var found = _data.FirstOrDefault(x => x.Id == id);
             if (found != null)
                 Remove(found);
         }
@@ -46,25 +50,21 @@ namespace RegistratorWorker.Collector
             _data.AddRange(containerInfos);
         }
 
-        public void RemoveRange(IEnumerable<string> Ids)
+        public void RemoveRange(IEnumerable<ContainerInfo> containerInfos)
         {
-            foreach (var id in Ids)
+            foreach (var containerInfo in containerInfos)
             {
-                var found = _data.FirstOrDefault(x=>x.Id == id);
-                if (found != null)
-                {
-                    _data.Remove(found);
-                }
+                _data.Remove(containerInfo);
             }
         }
 
         public void Update(ContainerInfo containerInfo)
         {
-            var index = _data.FindIndex(c=>c.Id == containerInfo.Id);
+            var index = _data.FindIndex(c => c.Id == containerInfo.Id);
             if (index == -1)
                 throw new ApplicationException($"The container with Id {containerInfo.Id} can not be found");
             _data.RemoveAt(index);
-            _data.Insert(index,containerInfo);
+            _data.Insert(index, containerInfo);
         }
     }
 }
