@@ -27,29 +27,17 @@ namespace RegistratorWorker
 
         public IConfiguration Configuration { get; }
 
-        public Uri ServerAddress { get; set; }
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var configFile = Configuration.GetValue<string>("configFile");            
-            var fileConfig = JsonConvert.DeserializeObject<RegistrationConfig>(File.ReadAllText(configFile));
             services.AddOptions();
-            services.Configure<RegistrationConfig>(config =>
-            {
-                config.Host = fileConfig.Host;
-                config.Consul = fileConfig.Consul;
-                config.DockerHost = fileConfig.DockerHost;
-                config.IntervalCheck = fileConfig.IntervalCheck;
-                config.Name = fileConfig.Name;
-                config.Role = fileConfig.Role;
-                config.DeregisterServiceAfter = fileConfig.DeregisterServiceAfter;
-                config.TimeOut = fileConfig.TimeOut;
-            });
+            services.Configure<RegistrationConfig>(Configuration);
             
             services.AddSingleton<IConsulUtilities, ConsulUtilities>();
             services.AddSingleton<IEnumerable<IDockerContainersCollector>>(provider =>
             {
-                return fileConfig.DockerHost
+                var dockerHost = JsonConvert.DeserializeObject<List<string>>(Environment.GetEnvironmentVariable("DockerHost"));
+                return dockerHost
                     .Select(x => new DockerContainersCollector(new DockerClientConfiguration(new Uri(x)))).ToList();
             });
             services.AddSingleton<IntervalCheck, IntervalCheck>();            
@@ -63,12 +51,7 @@ namespace RegistratorWorker
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            var featureCollection = app.Properties["server.Features"] as FeatureCollection;
-            var serverAddressesFeature = featureCollection.Get<IServerAddressesFeature>();
-            var address = serverAddressesFeature.Addresses.First();
-            ServerAddress = new Uri(address);
-
+            
             applicationLifetime.ApplicationStarted.Register(async ()=> await OnApplicationStarted(app));
             applicationLifetime.ApplicationStopped.Register(OnApplicationStopped);
             app.UseMvc();
@@ -76,35 +59,68 @@ namespace RegistratorWorker
 
         public async Task OnApplicationStarted(IApplicationBuilder app)
         {
-            var configFile = Configuration.GetValue<string>("configFile");
-            var configuration = JsonConvert.DeserializeObject<RegistrationConfig>(File.ReadAllText(configFile));
-            var consulUtilities = app.ApplicationServices.GetService<IConsulUtilities>();            
-            //check itself
+            var config = new RegistrationConfig();
+            var enumerator = Environment.GetEnvironmentVariables().GetEnumerator();
+            var consulUtilities = app.ApplicationServices.GetService<IConsulUtilities>();
+            while (enumerator.MoveNext())
+            {
+                string key = enumerator.Key.ToString();
+                switch (key)
+                {
+                    case "Host":
+                        config.Host = enumerator.Value.ToString();
+                        break;
+                    case "DeregisterServiceAfter":
+                        config.DeregisterServiceAfter = int.Parse(enumerator.Value.ToString());
+                        break;
+                    case "Name":
+                        config.Name = enumerator.Value.ToString();
+                        break;
+                    case "Role":
+                        config.Role = enumerator.Value.ToString();
+                        break;
+                    case "IntervalCheck":
+                        config.IntervalCheck = int.Parse(enumerator.Value.ToString());
+                        break;
+                    case "TimeOut":
+                        config.TimeOut = int.Parse(enumerator.Value.ToString());
+                        break;
+                    case "Consul":
+                        config.Consul = enumerator.Value.ToString();
+                        break;
+                    case "DockerHost":
+                        config.DockerHost = enumerator.Value.ToString();
+                        break;
+                }
+            }
+            ////check itself
             using (var consulClient = consulUtilities.CreateConsulClient())
             {
                 await consulClient.Agent.ServiceRegister(new AgentServiceRegistration()
                 {
-                    Address = $"{ServerAddress.Scheme}://{ServerAddress.Host}",
+                    Address = $"http://{config.Host}",
                     Check = new AgentServiceCheck()
                     {
-                        HTTP = $"{ServerAddress.Scheme}://{ServerAddress.Host}:{ServerAddress.Port}/api/health/status",
-                        Interval = TimeSpan.FromMilliseconds(configuration.IntervalCheck),
+                        HTTP = $"http://{config.Host}:5000/api/health/status",
+                        Interval = TimeSpan.FromMilliseconds(config.IntervalCheck),
                         DeregisterCriticalServiceAfter =
-                            TimeSpan.FromMilliseconds(configuration.DeregisterServiceAfter),
-                        Timeout = configuration.TimeOut == 0
+                            TimeSpan.FromMilliseconds(config.DeregisterServiceAfter),
+                        Timeout = config.TimeOut == 0
                             ? TimeSpan.FromMinutes(5)
-                            : TimeSpan.FromMilliseconds(configuration.TimeOut),
+                            : TimeSpan.FromMilliseconds(config.TimeOut),
                         Status = HealthStatus.Passing
                     },
-                    Name = configuration.Name,
-                    ID = configuration.Name + "_" + Guid.NewGuid(),
-                    Tags = new[] {configuration.Role},
-                    Port = ServerAddress.Port,
+                    Name = config.Name,
+                    ID = config.Name + "_" + Guid.NewGuid(),
+                    Tags = new[] { config.Role },
+                    Port = 5000,
                     EnableTagOverride = true
                 });
             }
             // collect data for the first time.
-            foreach (var dockerHost in configuration.DockerHost)
+            var dockerHosts = JsonConvert.DeserializeObject<List<string>>(Environment.GetEnvironmentVariable("DockerHost"));
+
+            foreach (var dockerHost in dockerHosts)
             {                
                 var collector = new DockerContainersCollector(new DockerClientConfiguration(new Uri(dockerHost)));
                 var allRunningContainerAndIsCretedByService = await collector.GetAllRunningContainerThatIsCretedByService();

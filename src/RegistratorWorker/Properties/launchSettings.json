@@ -10,20 +10,28 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
+      "commandLineArgs": "--host 10.0.19.110 --docker tcp://10.0.19.106:2375 --consul 10.0.19.110:8500",
       "launchBrowser": true,
       "launchUrl": "api/values",
-      "commandLineArgs": "--host 10.0.19.110 --docker tcp://10.0.19.106:2375 --consul 10.0.19.110:8500",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "RegistratorWorker": {
       "commandName": "Project",
+      //"commandLineArgs": "--configFile registrator.json",
       "launchBrowser": true,
       "launchUrl": "api/health/status",
-      "commandLineArgs": "--configFile registrator.json",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "Host": "10.0.19.160:500",
+        "Name": "Test",
+        "TimeOut": "120000",
+        "Consul": "10.0.19.110:8500",
+        "DockerHost": "['tcp://10.0.19.107:2376', 'tcp://10.0.19.107:2376']",
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DeregisterServiceAfter": "120000",
+        "Role": "Manager",
+        "IntervalCheck": "300000"
       },
       "applicationUrl": "http://localhost:51076/"
     }

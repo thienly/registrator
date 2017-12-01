@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using System.Net;
 
 namespace RegistratorWorker
 {
@@ -12,7 +13,11 @@ namespace RegistratorWorker
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .Build();
+            .UseStartup<Startup>()
+            .UseKestrel(options =>
+            {
+                options.Listen(IPAddress.Any, 5000);
+            })
+            .Build();
     }
 }
