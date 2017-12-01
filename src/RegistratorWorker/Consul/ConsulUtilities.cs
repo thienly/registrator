@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Consul;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using RegistratorWorker.Collector;
 using RegistratorWorker.Common;
@@ -14,8 +15,10 @@ namespace RegistratorWorker.Consul
     public class ConsulUtilities : IConsulUtilities
     {
         private readonly RegistrationConfig _configuration;
-        public ConsulUtilities(IOptions<RegistrationConfig> configuration)
+        private ILogger _logger;
+        public ConsulUtilities(IOptions<RegistrationConfig> configuration, ILogger logger)
         {
+            _logger = logger;
             _configuration = configuration.Value;
         }
         public async Task PushData(IEnumerable<ContainerInfo> containerInfos)
@@ -69,6 +72,7 @@ namespace RegistratorWorker.Consul
         public ConsulClient CreateConsulClient()
         {
             var consulAddress = _configuration.Consul;
+            _logger.LogInformation($"The consule address {consulAddress}");
             return new ConsulClient(cfg =>
             {
                 cfg.Address = new Uri($"http://{consulAddress}");
