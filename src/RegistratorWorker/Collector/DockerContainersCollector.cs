@@ -49,7 +49,8 @@ namespace RegistratorWorker.Collector
         {
             var readOnlyCollection = await GetAllRunningContainerThatIsCretedByService();
             var currentData = CollectorInternalData.Current.Data;
-            return readOnlyCollection.Except(currentData,new ContainerInfo()).ToList();
+            var moreIds = readOnlyCollection.Select(x=>x.Id).ToList().Except(currentData.Select(x=>x.ID)).ToList();
+            return readOnlyCollection.Where(x => moreIds.Contains(x.Id)).ToList();
         }
     }
 }

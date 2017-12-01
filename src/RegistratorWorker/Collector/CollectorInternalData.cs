@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using RegistratorWorker.Common;
+using Consul;
 
 namespace RegistratorWorker.Collector
 {
     public sealed class CollectorInternalData
     {
-        private List<ContainerInfo> _data = new List<ContainerInfo>();
+        private List<AgentServiceRegistration> _data = new List<AgentServiceRegistration>();
         private static CollectorInternalData _current;
         private CollectorInternalData()
         {
@@ -24,24 +24,24 @@ namespace RegistratorWorker.Collector
             }
         }
 
-        public List<ContainerInfo> Data => _data;
+        public List<AgentServiceRegistration> Data => _data;
 
-        public void Add(ContainerInfo containerInfo)
+        public void Add(AgentServiceRegistration containerInfo)
         {
             _data.Add(containerInfo);
         }
 
-        public void Remove(ContainerInfo containerInfo)
+        public void Remove(AgentServiceRegistration containerInfo)
         {
             _data.Remove(containerInfo);
         }
         public void Remove(string id)
         {
-            var found = _data.FirstOrDefault(x=>x.Id == id);
+            var found = _data.FirstOrDefault(x=>x.ID == id);
             if (found != null)
                 Remove(found);
         }
-        public void AddRange(IEnumerable<ContainerInfo> containerInfos)
+        public void AddRange(IEnumerable<AgentServiceRegistration> containerInfos)
         {
             _data.AddRange(containerInfos);
         }
@@ -50,7 +50,7 @@ namespace RegistratorWorker.Collector
         {
             foreach (var id in Ids)
             {
-                var found = _data.FirstOrDefault(x=>x.Id == id);
+                var found = _data.FirstOrDefault(x=>x.ID == id);
                 if (found != null)
                 {
                     _data.Remove(found);
@@ -58,13 +58,18 @@ namespace RegistratorWorker.Collector
             }
         }
 
-        public void Update(ContainerInfo containerInfo)
+        public void Update(AgentServiceRegistration containerInfo)
         {
-            var index = _data.FindIndex(c=>c.Id == containerInfo.Id);
+            var index = _data.FindIndex(c=>c.ID == containerInfo.ID);
             if (index == -1)
-                throw new ApplicationException($"The container with Id {containerInfo.Id} can not be found");
+                throw new ApplicationException($"The container with Id {containerInfo.ID} can not be found");
             _data.RemoveAt(index);
             _data.Insert(index,containerInfo);
+        }
+
+        public void Clear()
+        {
+            _data.Clear();
         }
     }
 }

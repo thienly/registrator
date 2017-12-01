@@ -14,10 +14,8 @@ namespace RegistratorWorker.Consul
     public class ConsulUtilities : IConsulUtilities
     {
         private readonly RegistrationConfig _configuration;
-        private ILogger _logger;
-        public ConsulUtilities(IOptions<RegistrationConfig> configuration, ILoggerFactory loggerFactory)
+        public ConsulUtilities(IOptions<RegistrationConfig> configuration)
         {
-            _logger = loggerFactory.CreateLogger("ConsulLogger");
             _configuration = configuration.Value;
         }
         public async Task PushData(IEnumerable<ContainerInfo> containerInfos)
@@ -25,33 +23,31 @@ namespace RegistratorWorker.Consul
             var infos = containerInfos as IList<ContainerInfo> ?? containerInfos.ToList();
             using (var client = CreateConsulClient())
             {
-                var queryResult = await client.Agent.Checks();
-                if (queryResult.StatusCode == HttpStatusCode.OK)
+                // get all services from cosul
+                var queryResult = await client.Agent.Services();
+                var latesRunningServices = queryResult.Response.Values.Select(x => x.ID).ToList();
+                var moreServicesId = infos.Select(x => x.Id).ToList().Except(latesRunningServices).ToList();
+                foreach (var containerInfo in infos.Where(x => moreServicesId.Contains(x.Id)))
                 {
-                    foreach (var containerInfo in infos.ToList())
+                    var registration = new AgentServiceRegistration()
                     {
-                        var registration = new AgentServiceRegistration()
+                        ID = containerInfo.Id,
+                        Name = containerInfo.Name,
+                        Address = containerInfo.Host,
+                        Port = containerInfo.Port,
+                        Tags = new[] { containerInfo.Name },
+                        Check = new AgentServiceCheck()
                         {
-                            ID = containerInfo.Id,
-                            Name = containerInfo.Name,
-                            Address = containerInfo.Host,
-                            Port = containerInfo.Port,
-                            Tags = new[] { containerInfo.Name },
-                            Check = new AgentServiceCheck()
-                            {
-                                HTTP = $"http://{containerInfo.Host}:{containerInfo.Port}/api/health/status",
-                                Interval = TimeSpan.FromMilliseconds(10000),
-                                DeregisterCriticalServiceAfter = TimeSpan.FromMinutes(2),
-                                Timeout = TimeSpan.FromMinutes(5),
-                                Status = HealthStatus.Passing
-                            },
-                        };
-                        await client.Agent.ServiceRegister(registration);
-                    }
+                            HTTP = $"http://{containerInfo.Host}:{containerInfo.Port}/api/health/status",
+                            Interval = TimeSpan.FromMilliseconds(10000),
+                            DeregisterCriticalServiceAfter = TimeSpan.FromMinutes(2),
+                            Timeout = TimeSpan.FromMinutes(5),
+                            Status = HealthStatus.Passing
+                        },
+                    };
+                    await client.Agent.ServiceRegister(registration);
                 }
             }
-            CollectorInternalData.Current.AddRange(infos);
-
         }
 
         public async Task DeregisterService(IEnumerable<ContainerInfo> containerInfos)
@@ -71,11 +67,10 @@ namespace RegistratorWorker.Consul
         public ConsulClient CreateConsulClient()
         {
             var consulAddress = _configuration.Consul;
-            _logger.LogInformation($"The consule address {consulAddress}");
             return new ConsulClient(cfg =>
-            {
-                cfg.Address = new Uri($"http://{consulAddress}");
-            });
+             {
+                 cfg.Address = new Uri($"http://{consulAddress}");
+             });
         }
         public ConsulClient CreateConsulClient(string consulAddress)
         {

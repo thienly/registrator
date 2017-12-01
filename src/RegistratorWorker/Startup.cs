@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Consul;
 using Docker.DotNet;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Hosting.Server.Features;
-using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
@@ -119,7 +116,6 @@ namespace RegistratorWorker
             }
             // collect data for the first time.
             var dockerHosts = JsonConvert.DeserializeObject<List<string>>(Environment.GetEnvironmentVariable("DockerHost"));
-
             foreach (var dockerHost in dockerHosts)
             {                
                 var collector = new DockerContainersCollector(new DockerClientConfiguration(new Uri(dockerHost)));

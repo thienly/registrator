@@ -33,7 +33,6 @@ namespace RegistratorWorker.Common
         {
             // perform check health and deregister if service is critical status
             // clean up internal data
-            await RemoveNotValidDataInInternalData();
             await DeregisterCriticalService();
             foreach (var dockerContainersCollector in _containersCollector)
             {
@@ -50,21 +49,9 @@ namespace RegistratorWorker.Common
                 foreach (var responseValue in result.Response.Values.Where(r => r.Status == HealthStatus.Critical))
                 {
                     await consulClient.Agent.ServiceDeregister(responseValue.ServiceID);
-                    CollectorInternalData.Current.Remove(responseValue.ServiceID);
                 }
             }
         }
 
-        private async Task RemoveNotValidDataInInternalData()
-        {
-            using (var consulClient = _consulUtilities.CreateConsulClient())
-            {
-                var services = await consulClient.Agent.Services();
-                var listOfServiceId = services.Response.Values.Select(x => x.ID);
-                var currentData = CollectorInternalData.Current.Data.Select(x => x.Id);
-                var itemsThatIsRemoved = currentData.Except(listOfServiceId);
-                CollectorInternalData.Current.RemoveRange(itemsThatIsRemoved);
-            }
-        }
     }
 }
