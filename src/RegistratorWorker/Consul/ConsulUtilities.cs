@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Consul;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using RegistratorWorker.Collector;
@@ -16,9 +15,9 @@ namespace RegistratorWorker.Consul
     {
         private readonly RegistrationConfig _configuration;
         private ILogger _logger;
-        public ConsulUtilities(IOptions<RegistrationConfig> configuration, ILogger logger)
+        public ConsulUtilities(IOptions<RegistrationConfig> configuration, ILoggerFactory loggerFactory)
         {
-            _logger = logger;
+            _logger = loggerFactory.CreateLogger("ConsulLogger");
             _configuration = configuration.Value;
         }
         public async Task PushData(IEnumerable<ContainerInfo> containerInfos)
