@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Consul;
 using Microsoft.Extensions.Logging;
@@ -29,6 +30,27 @@ namespace RegistratorWorker.Consul
                 var moreServicesId = infos.Select(x => x.Id).ToList().Except(latesRunningServices).ToList();
                 foreach (var containerInfo in infos.Where(x => moreServicesId.Contains(x.Id)))
                 {
+                    try
+                    {
+                        // internal check status before push to consul
+                        var statusApi = $"http://{containerInfo.Host}:{containerInfo.Port}/api/health/status";
+                        using (var httpChecker = new HttpClient())
+                        {
+                            var request = new HttpRequestMessage();
+                            request.Method = HttpMethod.Get;
+                            var response = await httpChecker.SendAsync(request);
+                            if (response.StatusCode != HttpStatusCode.OK)
+                            {
+                                continue;
+                            }        
+                        }
+                    }
+                    catch(Exception)
+                    {
+                        continue;            
+                    }
+                
+
                     var registration = new AgentServiceRegistration()
                     {
                         ID = containerInfo.Id,
