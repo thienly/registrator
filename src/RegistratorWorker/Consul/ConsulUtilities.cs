@@ -42,7 +42,7 @@ namespace RegistratorWorker.Consul
                             var response = await httpChecker.SendAsync(request);
                             if (response.StatusCode != HttpStatusCode.OK)
                             {
-                                Log.Warning("{Registrator checked and @containerInfo} this one is not good to push", containerInfo);
+                                Log.Warning("Registrator checked and {@containerInfo} this one is not good to push", containerInfo);
                                 continue;
                             }        
                         }
