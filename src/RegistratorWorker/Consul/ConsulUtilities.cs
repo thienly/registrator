@@ -38,6 +38,7 @@ namespace RegistratorWorker.Consul
                         {
                             var request = new HttpRequestMessage();
                             request.Method = HttpMethod.Get;
+                            request.RequestUri = new Uri(statusApi);
                             var response = await httpChecker.SendAsync(request);
                             if (response.StatusCode != HttpStatusCode.OK)
                             {
