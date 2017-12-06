@@ -5,10 +5,9 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Consul;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using RegistratorWorker.Collector;
 using RegistratorWorker.Common;
+using Serilog;
 
 namespace RegistratorWorker.Consul
 {
@@ -32,6 +31,7 @@ namespace RegistratorWorker.Consul
                 {
                     try
                     {
+                        Log.Information("Registrator is checking for {@containerInfo}", containerInfo);
                         // internal check status before push to consul
                         var statusApi = $"http://{containerInfo.Host}:{containerInfo.Port}/api/health/status";
                         using (var httpChecker = new HttpClient())
@@ -42,6 +42,7 @@ namespace RegistratorWorker.Consul
                             var response = await httpChecker.SendAsync(request);
                             if (response.StatusCode != HttpStatusCode.OK)
                             {
+                                Log.Warning("{Registrator checked and @containerInfo} this one is not good to push", containerInfo);
                                 continue;
                             }        
                         }
@@ -51,7 +52,7 @@ namespace RegistratorWorker.Consul
                         continue;            
                     }
                 
-
+                    Log.Information("Registrator pushed {@containerInfo}",containerInfo);
                     var registration = new AgentServiceRegistration()
                     {
                         ID = containerInfo.Id,
