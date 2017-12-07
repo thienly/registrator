@@ -31,7 +31,7 @@ namespace RegistratorWorker.Collector
                     x.Labels.ContainsKey("com.docker.swarm.service.name") && x.Ports.Any(p => p.PublicPort > 0)).Select(
                     x =>
                     {
-                        var name = x.Labels.FirstOrDefault(l => l.Key == "com.docker.swarm.service.name").Value;
+                        var name = x.Names.FirstOrDefault().Replace("/","");
                         var info = new ContainerInfo()
                         {
                             Id = x.ID,
