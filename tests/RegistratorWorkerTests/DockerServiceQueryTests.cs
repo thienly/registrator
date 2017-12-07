@@ -11,7 +11,7 @@ namespace RegistratorWorkerTests
     public abstract class BaseContainerTest
     {
         protected DockerClientConfiguration _configuration =
-            new DockerClientConfiguration(new Uri("tcp://10.0.19.107:2376"));
+            new DockerClientConfiguration(new Uri("tcp://10.0.19.104:2376"));
     }
     public class DockerContainersCollectorTest: BaseContainerTest
     {

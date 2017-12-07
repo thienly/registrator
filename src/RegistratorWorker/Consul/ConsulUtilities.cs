@@ -54,7 +54,7 @@ namespace RegistratorWorker.Consul
                 
                     Log.Information("Registrator pushed {@containerInfo}",containerInfo);
                     var registration = new AgentServiceRegistration()
-                    {
+                    {                        
                         ID = containerInfo.Id,
                         Name = containerInfo.Name,
                         Address = containerInfo.Host,
